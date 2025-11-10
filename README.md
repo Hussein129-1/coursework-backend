@@ -1,16 +1,28 @@
-# After School Classes - Backend API
+# 🎓 After School Classes - Backend API
 
-This is the Express.js backend server for the After School Classes booking application.
+> A robust RESTful API built with Express.js and MongoDB for managing after-school class bookings
 
-## Technologies Used
+[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-4.18+-blue.svg)](https://expressjs.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green.svg)](https://www.mongodb.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-- **Node.js** - JavaScript runtime
-- **Express.js** - Web framework for creating REST API
-- **MongoDB Atlas** - Cloud database for storing lessons and orders
-- **CORS** - Enable cross-origin requests from frontend
+## 📋 Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [API Endpoints](#api-endpoints)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Database Schema](#database-schema)
+- [Deployment](#deployment)
+- [Scripts](#scripts)
+- [Project Structure](#project-structure)
 
-## Setup Instructions
+## 🌟 Overview
 
+This backend serves as the API layer for the After School Classes booking system. It handles lesson management, search functionality, order processing, and inventory management for available class spaces.
 ### 1. Install Dependencies
 
 ```bash
@@ -163,6 +175,4 @@ Follow the lecture instructions for deploying to AWS Elastic Beanstalk or AWS La
 - CORS is enabled for all origins in development
 - Update CORS settings for production deployment
 
-## Support
 
-For issues or questions, refer to the project documentation or contact the development team.
