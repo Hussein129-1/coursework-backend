@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: afterschool-backend
+    env: node
+    plan: free
+    branch: main
+    buildCommand: npm install
+    startCommand: node server.js
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: MONGODB_URI
+        sync: false
+      - key: DATABASE_NAME
+        value: afterschool_lessons
+    healthCheckPath: /
