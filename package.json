@@ -1,0 +1,19 @@
+{
+  "name": "afterschool-classes-backend",
+  "version": "1.0.0",
+  "description": "Backend server for After School Classes booking application using Express.js and MongoDB",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": ["express", "mongodb", "rest-api", "nodejs"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^6.3.0",
+    "cors": "^2.8.5"
+  }
+}

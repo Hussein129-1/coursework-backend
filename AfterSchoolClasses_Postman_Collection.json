@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "12345678-1234-1234-1234-123456789abc",
+		"name": "After School Classes API",
+		"description": "API endpoints for the After School Classes booking system. This collection includes all required endpoints for testing the backend server.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET - API Welcome",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response has message\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.message).to.exist;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				},
+				"description": "Get API welcome message and available endpoints"
+			},
+			"response": []
+		},
+		{
+			"name": "GET - All Lessons",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array');",
+							"});",
+							"",
+							"pm.test(\"Has at least 10 lessons\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.be.at.least(10);",
+							"});",
+							"",
+							"pm.test(\"Lessons have required fields\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var lesson = jsonData[0];",
+							"    pm.expect(lesson).to.have.property('subject');",
+							"    pm.expect(lesson).to.have.property('location');",
+							"    pm.expect(lesson).to.have.property('price');",
+							"    pm.expect(lesson).to.have.property('spaces');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/lessons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lessons"
+					]
+				},
+				"description": "Retrieve all available lessons from the database. This endpoint returns an array of lesson objects with details like subject, location, price, and available spaces."
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Search Lessons (by subject)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/search?q=math",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "math",
+							"description": "Search query - can match subject, location, price, or spaces"
+						}
+					]
+				},
+				"description": "Search for lessons across all fields. Change the 'q' parameter to search by subject, location, price, or spaces. This implements the challenge component using backend search."
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Search Lessons (by location)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Results contain search term\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    if (jsonData.length > 0) {",
+							"        var location = jsonData[0].location.toLowerCase();",
+							"        pm.expect(location).to.include('hendon');",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/search?q=hendon",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "hendon"
+						}
+					]
+				},
+				"description": "Example search by location. Returns all lessons in Hendon."
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Create Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response has order ID\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.orderId).to.exist;",
+							"});",
+							"",
+							"pm.test(\"Success message present\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.message).to.exist;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Test Customer\",\n  \"phone\": \"1234567890\",\n  \"lessonIds\": [\"REPLACE_WITH_ACTUAL_LESSON_ID\"],\n  \"spaces\": {\n    \"REPLACE_WITH_ACTUAL_LESSON_ID\": 2\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"order"
+					]
+				},
+				"description": "Create a new order in the database. Make sure to replace the lesson ID with an actual ID from the GET /lessons response.\n\nRequired fields:\n- name: Customer name (letters only)\n- phone: Phone number (numbers only)\n- lessonIds: Array of lesson IDs\n- spaces: Object mapping lesson IDs to quantities"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - Update Lesson Spaces",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Lesson updated successfully\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.message).to.exist;",
+							"    pm.expect(jsonData.lesson).to.exist;",
+							"});",
+							"",
+							"pm.test(\"Spaces field updated\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.lesson.spaces).to.be.a('number');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"spaces\": 3\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/lessons/REPLACE_WITH_ACTUAL_LESSON_ID",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lessons",
+						"REPLACE_WITH_ACTUAL_LESSON_ID"
+					]
+				},
+				"description": "Update the available spaces for a specific lesson. Replace the lesson ID in the URL with an actual ID from the GET /lessons response.\n\nThis endpoint allows setting spaces to ANY value (not just increment/decrement), which satisfies the full 5% requirement.\n\nRequest body:\n- spaces: Number (cannot be negative)"
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Static Image (Success)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/images/test.jpg",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"images",
+						"test.jpg"
+					]
+				},
+				"description": "Test the static file middleware. This will return the image if it exists in the backend/public/images/ folder."
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Static Image (404 Error)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Error message present\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.error).to.exist;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/images/nonexistent.jpg",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"images",
+						"nonexistent.jpg"
+					]
+				},
+				"description": "Test the static file middleware error handling. This should return a 404 error with a custom message when the image doesn't exist."
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
