@@ -31,6 +31,8 @@ const PORT = process.env.PORT || 3000; // Server port (use environment variable 
 // CREATE EXPRESS APPLICATION
 // ========================================
 const app = express();
+// Pretty-print JSON responses
+app.set('json spaces', 2);
 
 // ========================================
 // MIDDLEWARE FUNCTIONS
