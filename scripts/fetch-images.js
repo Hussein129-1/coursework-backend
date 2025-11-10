@@ -10,6 +10,25 @@ const projectRoot = path.resolve(__dirname, '..');
 const lessonsPath = path.join(projectRoot, 'lessons.json');
 const imagesDir = path.join(projectRoot, 'public', 'images');
 
+// Map subjects to appropriate Unsplash search terms
+const subjectToKeyword = {
+  'Mathematics': 'mathematics-education',
+  'English Literature': 'books-literature',
+  'Science': 'science-laboratory',
+  'Computer Programming': 'coding-programming',
+  'Art & Design': 'art-painting',
+  'Music Theory': 'music-notes',
+  'Physical Education': 'sports-fitness',
+  'History': 'history-ancient',
+  'Geography': 'world-map',
+  'Spanish Language': 'language-learning',
+  'Chemistry': 'chemistry-lab',
+  'Drama & Theatre': 'theater-stage',
+  'Biology': 'biology-nature',
+  'Physics': 'physics-science',
+  'Economics': 'business-economics'
+};
+
 function sanitizeSeed(text) {
   return String(text).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
@@ -56,17 +75,17 @@ async function run() {
     await fsPromises.mkdir(imagesDir, { recursive: true });
 
     for (const lesson of lessons) {
-      const seed = sanitizeSeed(lesson.subject || lesson.topic || 'lesson');
-      const fileName = lesson.image || `${seed}.jpg`;
+      const subject = lesson.subject || lesson.topic || 'lesson';
+      const fileName = lesson.image || `${sanitizeSeed(subject)}.jpg`;
       const dest = path.join(imagesDir, fileName);
-      // Skip if already exists
-      try {
-        await fsPromises.access(dest);
-        console.log(`Exists, skipping: ${fileName}`);
-        continue;
-      } catch (_) {}
-      const url = `https://picsum.photos/seed/${encodeURIComponent(seed)}/800/600`;
-      console.log(`Downloading ${fileName} from ${url}`);
+      
+      // Get appropriate keyword for this subject
+      const keyword = subjectToKeyword[subject] || sanitizeSeed(subject);
+      
+      // Use Picsum Photos with seed for consistent, reliable images
+      const url = `https://picsum.photos/seed/${encodeURIComponent(sanitizeSeed(subject))}/800/600.jpg`;
+      
+      console.log(`Downloading ${fileName}...`);
       await download(url, dest);
     }
 
