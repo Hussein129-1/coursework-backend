@@ -9,6 +9,9 @@ import cors from 'cors';
 import path from 'path';
 // URL - Node.js built-in module for working with URLs
 import { fileURLToPath } from 'url';
+// Dotenv - Load environment variables from .env
+import dotenv from 'dotenv';
+dotenv.config();
 
 // ========================================
 // CONFIGURATION
@@ -18,10 +21,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // MongoDB Atlas connection string
-// IMPORTANT: Replace this with your own MongoDB Atlas connection string
+// IMPORTANT: Uses environment variable if provided, falls back to placeholder
 // Format: mongodb+srv://username:password@cluster.mongodb.net/database
-const MONGODB_URI = 'mongodb+srv://your-username:your-password@your-cluster.mongodb.net/';
-const DATABASE_NAME = 'afterschool_classes'; // Name of the database
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://your-username:your-password@your-cluster.mongodb.net/';
+const DATABASE_NAME = process.env.DATABASE_NAME || 'afterschool_lessons'; // Name of the database
 const PORT = process.env.PORT || 3000; // Server port (use environment variable or default to 3000)
 
 // ========================================
@@ -85,7 +88,6 @@ async function connectToDatabase() {
     try {
         // Create a new MongoDB client with connection string
         const client = new MongoClient(MONGODB_URI);
-        destinyetiko@yopmail.com
         // Connect to the database
         await client.connect();
         console.log('✅ Successfully connected to MongoDB Atlas');
@@ -180,8 +182,8 @@ app.get('/search', async (req, res) => {
             $or: [
                 { subject: searchRegex },
                 { location: searchRegex },
-                { price: searchRegex },
                 // Convert numbers to strings for searching
+                { $expr: { $regexMatch: { input: { $toString: "$price" }, regex: searchQuery, options: "i" } } },
                 { $expr: { $regexMatch: { input: { $toString: "$spaces" }, regex: searchQuery, options: "i" } } }
             ]
         }).toArray();
