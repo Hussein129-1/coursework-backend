@@ -1,0 +1,122 @@
+[
+  {
+    "subject": "Mathematics",
+    "location": "Hendon",
+    "price": 100,
+    "spaces": 5,
+    "image": "mathematics.jpg",
+    "description": "Sharpen algebra, geometry, and problem-solving with expert-led sessions."
+  },
+  {
+    "subject": "English Literature",
+    "location": "Colindale",
+    "price": 80,
+    "spaces": 5,
+    "image": "english-literature.jpg",
+    "description": "Analyze classic and modern texts to improve critical reading and writing."
+  },
+  {
+    "subject": "Science",
+    "location": "Brent Cross",
+    "price": 90,
+    "spaces": 5,
+    "image": "science.jpg",
+    "description": "Explore biology, chemistry, and physics through engaging experiments."
+  },
+  {
+    "subject": "Computer Programming",
+    "location": "Golders Green",
+    "price": 95,
+    "spaces": 5,
+    "image": "computer-programming.jpg",
+    "description": "Build real projects while learning Python and JavaScript fundamentals."
+  },
+  {
+    "subject": "Art & Design",
+    "location": "Hendon",
+    "price": 75,
+    "spaces": 5,
+    "image": "art-design.jpg",
+    "description": "Develop drawing, painting, and digital design skills with guided practice."
+  },
+  {
+    "subject": "Music Theory",
+    "location": "Colindale",
+    "price": 85,
+    "spaces": 5,
+    "image": "music-theory.jpg",
+    "description": "Understand notation, harmony, and composition to boost performance."
+  },
+  {
+    "subject": "Physical Education",
+    "location": "Brent Cross",
+    "price": 70,
+    "spaces": 5,
+    "image": "physical-education.jpg",
+    "description": "Improve fitness, coordination, and teamwork through varied sports."
+  },
+  {
+    "subject": "History",
+    "location": "Golders Green",
+    "price": 80,
+    "spaces": 5,
+    "image": "history.jpg",
+    "description": "Journey through world events and civilizations with interactive activities."
+  },
+  {
+    "subject": "Geography",
+    "location": "Hendon",
+    "price": 78,
+    "spaces": 5,
+    "image": "geography.jpg",
+    "description": "Study places, people, and environments with map skills and case studies."
+  },
+  {
+    "subject": "Spanish Language",
+    "location": "Colindale",
+    "price": 88,
+    "spaces": 5,
+    "image": "spanish-language.jpg",
+    "description": "Learn conversational Spanish with vocabulary, grammar, and role-play."
+  },
+  {
+    "subject": "Chemistry",
+    "location": "Brent Cross",
+    "price": 92,
+    "spaces": 5,
+    "image": "chemistry.jpg",
+    "description": "Understand atoms, reactions, and lab techniques with safe experiments."
+  },
+  {
+    "subject": "Drama & Theatre",
+    "location": "Golders Green",
+    "price": 82,
+    "spaces": 5,
+    "image": "drama-theatre.jpg",
+    "description": "Build confidence with acting, improvisation, and stagecraft exercises."
+  },
+  {
+    "subject": "Biology",
+    "location": "Hendon",
+    "price": 89,
+    "spaces": 5,
+    "image": "biology.jpg",
+    "description": "Discover cells, systems, and ecosystems through models and demos."
+  },
+  {
+    "subject": "Physics",
+    "location": "Colindale",
+    "price": 94,
+    "spaces": 5,
+    "image": "physics.jpg",
+    "description": "Master mechanics, waves, and electricity with hands-on problem solving."
+  },
+  {
+    "subject": "Economics",
+    "location": "Brent Cross",
+    "price": 91,
+    "spaces": 5,
+    "image": "economics.jpg",
+    "description": "Learn supply, demand, and markets with real-world examples and games."
+  }
+]
