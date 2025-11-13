@@ -34,13 +34,53 @@ while (( "$#" )); do
       all_empty=true; shift ;;
     --push)
       do_push=true; shift ;;
+    --)
+      shift
+      break ;;
+    [0-9]*)
+      if [[ -z "$count" ]]; then
+        count="$1"
+        shift
+      else
+        echo "Unknown arg: $1" >&2; exit 1
+      fi ;;
     *)
       echo "Unknown arg: $1" >&2; exit 1 ;;
   esac
 done
 
+# Support npm run style arguments (e.g. npm run autocommit -n 3 -m "msg")
+if [[ -z "$count" && -n "${npm_config_n:-}" ]]; then
+  count="${npm_config_n}"
+fi
+
+if [[ -z "$count" && -n "${npm_config_count:-}" ]]; then
+  count="${npm_config_count}"
+fi
+
+if [[ "$msg_prefix" == "auto commit" && -n "${npm_config_m:-}" ]]; then
+  msg_prefix="${npm_config_m}"
+fi
+
+if [[ "$msg_prefix" == "auto commit" && -n "${npm_config_message:-}" ]]; then
+  msg_prefix="${npm_config_message}"
+fi
+
+if [[ -z "$branch" && -n "${npm_config_b:-}" ]]; then
+  branch="${npm_config_b}"
+fi
+
+if [[ -z "$remote" && -n "${npm_config_r:-}" ]]; then
+  remote="${npm_config_r}"
+fi
+
 if [[ -z "$count" ]]; then
   echo "Error: -n <count> is required" >&2
+  exit 1
+fi
+
+if ! [[ "$count" =~ ^[0-9]+$ ]]; then
+  echo "Error: commit count must be a positive integer" >&2
   exit 1
 fi
 

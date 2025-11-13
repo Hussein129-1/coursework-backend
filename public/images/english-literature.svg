@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="english-literature-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+    <radialGradient id="english-literature-gradient-glow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#fff7ed" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#fff7ed" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#english-literature-gradient)" />
+  <circle cx="390" cy="360" r="260" fill="url(#english-literature-gradient-glow)" opacity="0.65" />
+  <circle cx="850" cy="160" r="180" fill="rgba(255,255,255,0.12)" />
+  <circle cx="920" cy="620" r="220" fill="rgba(255,255,255,0.1)" />
+  <text x="360" y="438" text-anchor="middle" font-size="180" font-family="'Poppins', 'Segoe UI', sans-serif" fill="rgba(15, 23, 42, 0.92)" font-weight="600">✒️</text>
+  <text x="640" y="320" font-family="'Poppins', 'Segoe UI', sans-serif" font-size="74" fill="#ffffff" font-weight="600">English Literature</text>
+  <text x="640" y="420" font-family="'Poppins', 'Segoe UI', sans-serif" font-size="30" fill="rgba(255,255,255,0.9)" font-weight="400">Stories, poetry & critical thinking</text>
+  <text x="640" y="520" font-family="'Poppins', 'Segoe UI', sans-serif" font-size="22" fill="rgba(15,23,42,0.85)" font-weight="400">Colindale • £80 • 5 spaces</text>
+</svg>
