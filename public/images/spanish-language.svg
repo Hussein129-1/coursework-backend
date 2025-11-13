@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480">
   <defs>
     <linearGradient id="spanish-language-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#ef4444" />
       <stop offset="100%" stop-color="#b91c1c" />
     </linearGradient>
-    <radialGradient id="spanish-language-gradient-glow" cx="50%" cy="50%" r="65%">
-      <stop offset="0%" stop-color="#fee2e2" stop-opacity="0.9" />
+    <radialGradient id="spanish-language-gradient-pulse" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#fee2e2" stop-opacity="0.85" />
       <stop offset="100%" stop-color="#fee2e2" stop-opacity="0" />
     </radialGradient>
   </defs>
-  <rect width="1200" height="800" fill="url(#spanish-language-gradient)" />
-  <circle cx="390" cy="360" r="260" fill="url(#spanish-language-gradient-glow)" opacity="0.65" />
-  <circle cx="850" cy="160" r="180" fill="rgba(255,255,255,0.12)" />
-  <circle cx="920" cy="620" r="220" fill="rgba(255,255,255,0.1)" />
-  <text x="360" y="438" text-anchor="middle" font-size="180" font-family="'Poppins', 'Segoe UI', sans-serif" fill="rgba(15, 23, 42, 0.92)" font-weight="600">🌎</text>
-  <text x="640" y="320" font-family="'Poppins', 'Segoe UI', sans-serif" font-size="74" fill="#ffffff" font-weight="600">Spanish Language</text>
-  <text x="640" y="420" font-family="'Poppins', 'Segoe UI', sans-serif" font-size="30" fill="rgba(255,255,255,0.9)" font-weight="400">Conversation, culture & confidence</text>
-  <text x="640" y="520" font-family="'Poppins', 'Segoe UI', sans-serif" font-size="22" fill="rgba(15,23,42,0.85)" font-weight="400">Colindale • £88 • 5 spaces</text>
+  <rect width="640" height="480" rx="32" fill="url(#spanish-language-gradient)" />
+  <circle cx="188" cy="156" r="96" fill="url(#spanish-language-gradient-pulse)" opacity="0.55" />
+  <circle cx="500" cy="120" r="72" fill="rgba(255,255,255,0.18)" />
+  <circle cx="540" cy="360" r="96" fill="rgba(255,255,255,0.12)" />
+  <text x="320" y="280" text-anchor="middle" dominant-baseline="middle" font-size="200" font-family="'Poppins', 'Segoe UI', sans-serif" fill="rgba(255,255,255,0.92)" font-weight="600">🌎</text>
 </svg>

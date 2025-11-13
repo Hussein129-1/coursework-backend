@@ -50,27 +50,24 @@ async function run() {
         tagline: 'Learn something amazing today'
       };
 
-      const gradientId = `${sanitizeSeed(subject)}-gradient`;
+        const gradientId = `${sanitizeSeed(subject)}-gradient`;
       const svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480">
   <defs>
     <linearGradient id="${gradientId}" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="${artwork.gradient[0]}" />
       <stop offset="100%" stop-color="${artwork.gradient[1]}" />
     </linearGradient>
-    <radialGradient id="${gradientId}-glow" cx="50%" cy="50%" r="65%">
-      <stop offset="0%" stop-color="${artwork.accent}" stop-opacity="0.9" />
+    <radialGradient id="${gradientId}-pulse" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="${artwork.accent}" stop-opacity="0.85" />
       <stop offset="100%" stop-color="${artwork.accent}" stop-opacity="0" />
     </radialGradient>
   </defs>
-  <rect width="1200" height="800" fill="url(#${gradientId})" />
-  <circle cx="390" cy="360" r="260" fill="url(#${gradientId}-glow)" opacity="0.65" />
-  <circle cx="850" cy="160" r="180" fill="rgba(255,255,255,0.12)" />
-  <circle cx="920" cy="620" r="220" fill="rgba(255,255,255,0.1)" />
-  <text x="360" y="438" text-anchor="middle" font-size="180" font-family="'Poppins', 'Segoe UI', sans-serif" fill="rgba(15, 23, 42, 0.92)" font-weight="600">${artwork.icon}</text>
-  <text x="640" y="320" font-family="'Poppins', 'Segoe UI', sans-serif" font-size="74" fill="#ffffff" font-weight="600">${subject}</text>
-  <text x="640" y="420" font-family="'Poppins', 'Segoe UI', sans-serif" font-size="30" fill="rgba(255,255,255,0.9)" font-weight="400">${artwork.tagline}</text>
-  <text x="640" y="520" font-family="'Poppins', 'Segoe UI', sans-serif" font-size="22" fill="rgba(15,23,42,0.85)" font-weight="400">${lesson.location} • £${lesson.price} • ${lesson.spaces} spaces</text>
+  <rect width="640" height="480" rx="32" fill="url(#${gradientId})" />
+  <circle cx="188" cy="156" r="96" fill="url(#${gradientId}-pulse)" opacity="0.55" />
+  <circle cx="500" cy="120" r="72" fill="rgba(255,255,255,0.18)" />
+  <circle cx="540" cy="360" r="96" fill="rgba(255,255,255,0.12)" />
+  <text x="320" y="280" text-anchor="middle" dominant-baseline="middle" font-size="200" font-family="'Poppins', 'Segoe UI', sans-serif" fill="rgba(255,255,255,0.92)" font-weight="600">${artwork.icon}</text>
 </svg>`;
 
       console.log(`Creating ${fileName} graphic...`);
@@ -83,17 +80,15 @@ async function run() {
       await fsPromises.writeFile(
         fallbackPath,
         `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480">
   <defs>
     <linearGradient id="fallback-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#6366f1" />
       <stop offset="100%" stop-color="#4338ca" />
     </linearGradient>
   </defs>
-  <rect width="1200" height="800" fill="url(#fallback-gradient)" />
-  <text x="600" y="360" text-anchor="middle" font-size="160" font-family="'Poppins', 'Segoe UI', sans-serif" fill="rgba(255,255,255,0.9)" font-weight="600">📚</text>
-  <text x="600" y="470" text-anchor="middle" font-size="48" font-family="'Poppins', 'Segoe UI', sans-serif" fill="#ffffff" font-weight="600">Learning in Progress</text>
-  <text x="600" y="540" text-anchor="middle" font-size="26" font-family="'Poppins', 'Segoe UI', sans-serif" fill="rgba(255,255,255,0.85)" font-weight="400">Stay curious, keep exploring new subjects</text>
+  <rect width="640" height="480" rx="32" fill="url(#fallback-gradient)" />
+  <text x="320" y="240" text-anchor="middle" dominant-baseline="middle" font-size="190" font-family="'Poppins', 'Segoe UI', sans-serif" fill="rgba(255,255,255,0.92)" font-weight="600">📚</text>
 </svg>`,
         'utf-8'
       );
